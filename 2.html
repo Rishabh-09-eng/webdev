@@ -73,7 +73,14 @@
 <div class="container">
   <h1>TinyExplain</h1>
 <p>Complex ideas made simple</p>
+<label for="age">Explain for age:</label>
+<select id="age">
+  <option value="5">5 years</option>
+  <option value="10" selected>10 years</option>
+  <option value="18">18 years</option>
+</select>
 
+<br><br>
   <input type="text" id="topic" placeholder="Enter a topic..." />
 <br>
 
@@ -99,6 +106,7 @@
 
 function generateExplanation() {
   let topic = document.getElementById("topic").value;
+  let age = document.getElementById("age").value;
 
   if (topic.trim() === "") {
     document.getElementById("output").innerText = "Please enter a topic first.";
@@ -108,11 +116,33 @@ function generateExplanation() {
   document.getElementById("output").innerText = "Generating explanation...";
 
   setTimeout(() => {
+    let explanation = "";
+
+    if (age == "5") {
+      explanation =
+        topic + " is something that helps things work.\n\n" +
+        "Example: You can see " + topic + " when you look at things around you.\n\n" +
+        "Analogy: It’s like a simple rule in a game.";
+    }
+
+    else if (age == "10") {
+      explanation =
+        topic + " is a concept that explains how something works.\n\n" +
+        "Example: You can notice " + topic + " in everyday situations.\n\n" +
+        "Analogy: Think of it like a guide that helps things make sense.";
+    }
+
+    else {
+      explanation =
+        topic + " is an idea used to understand and analyze how systems or processes function.\n\n" +
+        "Example: " + topic + " can be observed in real-world applications and scientific studies.\n\n" +
+        "Analogy: It’s similar to a framework that helps interpret complex behavior.";
+    }
+
     document.getElementById("output").innerText =
-      topic + " is a concept that helps explain how something works.\n\n" +
-      "Example: You can see " + topic + " in everyday life when observing things around you.\n\n" +
-      "Analogy: Think of " + topic + " like a simple rule that helps things make sense.";
-  }, 1500);
+      "Explanation for age " + age + ":\n\n" + explanation;
+
+  }, 1200);
 }
 </script>
 
