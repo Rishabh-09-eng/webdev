@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Explain It Like I'm 10</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+    .container {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  width: 400px;
+  text-align: center;
+}
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #ff0000;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f1f1;
+      border-radius: 8px;
+      min-height: 80px;
+      text-align: left;
+    }
+
+    .example {
+  background-color: #e0e0e0;
+  color: #333;
+  margin: 5px;
+}
+
+.example:hover {
+  background-color: #d0d0d0;
+}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>TinyExplain</h1>
+<p>Complex ideas made simple</p>
+
+  <input type="text" id="topic" placeholder="Enter a topic..." />
+<br>
+
+<p>Try examples:</p>
+<button class="example" onclick="setTopic('Gravity')">Gravity</button>
+<button class="example" onclick="setTopic('Blockchain')">Blockchain</button>
+<button class="example" onclick="setTopic('Internet')">Internet</button>
+
+<br><br>
+<button onclick="generateExplanation()">Explain</button>
+
+  <div class="output" id="output">
+    Your explanation will appear here...
+  </div>
+</div>
+
+<script>
+
+  function setTopic(text) {
+  document.getElementById("topic").value = text;
+} 
+
+
+function generateExplanation() {
+  let topic = document.getElementById("topic").value;
+
+  if (topic.trim() === "") {
+    document.getElementById("output").innerText = "Please enter a topic first.";
+    return;
+  }
+
+  document.getElementById("output").innerText = "Generating explanation...";
+
+  setTimeout(() => {
+    document.getElementById("output").innerText =
+      topic + " is a concept that helps explain how something works.\n\n" +
+      "Example: You can see " + topic + " in everyday life when observing things around you.\n\n" +
+      "Analogy: Think of " + topic + " like a simple rule that helps things make sense.";
+  }, 1500);
+}
+</script>
+
+</body>
+</html>
