@@ -12,6 +12,14 @@
   height: 100vh;
 }
 
+#ageBadge {
+  background-color: #4caf50;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
     .container {
   background: white;
   padding: 30px;
@@ -79,6 +87,7 @@
   <option value="10" selected>10 years</option>
   <option value="18">18 years</option>
 </select>
+<p>Selected level: <span id="ageBadge">Student</span></p>
 
 <br><br>
   <input type="text" id="topic" placeholder="Enter a topic..." />
@@ -98,6 +107,18 @@
 </div>
 
 <script>
+
+  
+
+document.getElementById("age").addEventListener("change", function() {
+  let level = "Student";
+
+  if (this.value == "5") level = "Beginner";
+  else if (this.value == "10") level = "Student";
+  else level = "Advanced";
+
+  document.getElementById("ageBadge").innerText = level;
+});
 
   function setTopic(text) {
   document.getElementById("topic").value = text;
@@ -123,15 +144,13 @@ function generateExplanation() {
         topic + " is something that helps things work.\n\n" +
         "Example: You can see " + topic + " when you look at things around you.\n\n" +
         "Analogy: It’s like a simple rule in a game.";
-    }
-
+    } 
     else if (age == "10") {
       explanation =
         topic + " is a concept that explains how something works.\n\n" +
-        "Example: You can notice " + topic + " in everyday situations.\n\n" +
+        "Example: You can notice " + topic + " in everyday life.\n\n" +
         "Analogy: Think of it like a guide that helps things make sense.";
-    }
-
+    } 
     else {
       explanation =
         topic + " is an idea used to understand and analyze how systems or processes function.\n\n" +
@@ -139,11 +158,10 @@ function generateExplanation() {
         "Analogy: It’s similar to a framework that helps interpret complex behavior.";
     }
 
-    document.getElementById("output").innerText =
-      "Explanation for age " + age + ":\n\n" + explanation;
-
+    document.getElementById("output").innerText = explanation;
   }, 1200);
 }
+
 </script>
 
 </body>
